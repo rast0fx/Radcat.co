@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radcat Productions</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link
+      rel="icon"
+      href="https://i.postimg.cc/ZY3nFBkh/raw-removebg-preview.png"
+      type="image/webp"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#f5f5dc", secondary: "#d4af37" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      @font-face {
+      font-family: 'Pixel';
+      src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+      }
+      body {
+      font-family: 'VT323', monospace;
+      background-color: #000;
+      color: #f5f5dc;
+      font-size: 18px;
+      }
+      .pixel-border {
+      position: relative;
+      box-shadow: 0 0 0 2px #f5f5dc;
+      }
+      .pixel-border:before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      box-shadow: 0 0 0 2px #000;
+      z-index: -1;
+      }
+      .pixel-btn {
+      position: relative;
+      background-color: #f5f5dc;
+      color: #000;
+      padding: 0.5rem 1rem;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.1s ease;
+      }
+      .pixel-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 2px 2px 0 #d4af37;
+      }
+      .pixel-btn:active {
+      transform: translate(0, 0);
+      box-shadow: none;
+      }
+      .pixel-header {
+      font-family: 'Press Start 2P', cursive;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      }
+      .pixel-card {
+      border: 4px solid #f5f5dc;
+      position: relative;
+      transition: all 0.2s ease;
+      }
+      .pixel-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 10px rgba(245, 245, 220, 0.5);
+      }
+      .pixel-card:before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 8px;
+      height: 8px;
+      background-color: #f5f5dc;
+      }
+      .pixel-card:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 8px;
+      height: 8px;
+      background-color: #f5f5dc;
+      }
+      .pixel-animation {
+      animation: pixel-float 3s infinite alternate ease-in-out;
+      }
+      @keyframes pixel-float {
+      0% {
+      transform: translateY(0);
+      }
+      100% {
+      transform: translateY(-10px);
+      }
+      }
+      .pixel-text-reveal {
+      overflow: hidden;
+      white-space: nowrap;
+      animation: pixel-text-reveal 2s steps(40, end);
+      }
+      @keyframes pixel-text-reveal {
+      from {
+      width: 0;
+      }
+      to {
+      width: 100%;
+      }
+      }
+      .scanlines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.1) 50%
+      );
+      background-size: 100% 4px;
+      z-index: 100;
+      pointer-events: none;
+      opacity: 0.15;
+      }
+      .nav-link {
+      position: relative;
+      color: #f5f5dc;
+      text-decoration: none;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      padding: 0.5rem;
+      }
+      .nav-link:hover:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #d4af37;
+      animation: pixel-line 0.3s linear;
+      }
+      @keyframes pixel-line {
+      0% {
+      width: 0;
+      }
+      100% {
+      width: 100%;
+      }
+      }
+      .hamburger {
+      width: 28px;
+      height: 20px;
+      position: relative;
+      cursor: pointer;
+      }
+      .hamburger span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      border-radius: 2px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .3s ease-in-out;
+      }
+      .hamburger span:nth-child(1) {
+      top: 0px;
+      transform-origin: left center;
+      }
+      .hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+      top: 8px;
+      transform-origin: left center;
+      }
+      .hamburger span:nth-child(4) {
+      top: 16px;
+      transform-origin: left center;
+      }
+      .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg);
+      top: -1px;
+      left: 4px;
+      }
+      .hamburger.open span:nth-child(2) {
+      width: 0%;
+      opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+      width: 0%;
+      opacity: 0;
+      }
+      .hamburger.open span:nth-child(4) {
+      transform: rotate(-45deg);
+      top: 17px;
+      left: 4px;
+      }
+      .mobile-menu {
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      height: 0;
+      background-color: rgba(0, 0, 0, 0.95);
+      overflow: hidden;
+      transition: all 0.4s ease;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid #f5f5dc;
+      }
+      .mobile-menu.open {
+      height: auto;
+      padding: 1rem;
+      border-top: 2px solid #f5f5dc;
+      }
+      .mobile-menu a {
+      display: block;
+      padding: 1rem;
+      color: #f5f5dc;
+      text-decoration: none;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(245, 245, 220, 0.2);
+      }
+      .mobile-menu a:last-child {
+      border-bottom: none;
+      }
+      input, button {
+      border: none;
+      outline: none;
+      }
+      .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: #f5f5dc;
+      color: #000;
+      margin: 0 0.5rem;
+      transition: all 0.2s ease;
+      }
+      .social-icon:hover {
+      transform: translateY(-5px);
+      background-color: #d4af37;
+      }
+      .pixel-image {
+      image-rendering: pixelated;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scanlines"></div>
+    <!-- Navigation -->
+    <header
+      class="fixed top-0 left-0 w-full bg-black z-50 border-b-2 border-primary"
+    >
+      <div class="container mx-auto px-4 py-3">
+        <nav class="flex justify-between items-center">
+          <a class="flex items-center">
+            <div class="w-10 h-10 mr-2 flex items-center justify-center">
+              <img
+                src="https://i.postimg.cc/ZY3nFBkh/raw-removebg-preview.png"
+                alt="Radcat Logo"
+                class="w-full h-full object-contain pixel-image"
+              />
+            </div>
+            <span
+              class="font-['Press_Start_2P'] text-primary text-sm md:text-base"
+              >RADCAT PRODUCTIONS</span
+            >
+          </a>
+          <div class="hidden md:flex space-x-6">
+            <a href="#about" class="nav-link">ABOUT</a>
+            <a href="#mission" class="nav-link">MISSION</a>
+            <a href="#features" class="nav-link">FEATURES</a>
+            
+            <a href="#contact" class="nav-link">JOIN US</a>
+          </div>
+          <div class="md:hidden hamburger z-50 p-2" id="hamburger">
+            <span class="bg-primary"></span>
+            <span class="bg-primary"></span>
+            <span class="bg-primary"></span>
+            <span class="bg-primary"></span>
+          </div>
+        </nav>
+      </div>
+      <div class="mobile-menu" id="mobile-menu">
+        <a href="#about">ABOUT</a>
+        <a href="#mission">MISSION</a>
+        <a href="#features">FEATURES</a>
+       
+        <a href="#contact">JOIN US</a>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden">
+      <div
+        class="absolute inset-0 bg-black z-0"
+        style="background-image: url('https://i.postimg.cc/BnFKjYq2/raw.webp'); background-size: 400px; background-repeat: repeat; opacity: 0.1;"
+      ></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="flex flex-col items-center justify-center">
+          <div class="w-64 h-64 md:w-80 md:h-80 mb-8 pixel-animation">
+            <div class="relative w-full h-full">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="text-primary font-['Press_Start_2P'] text-4xl md:text-5xl tracking-wider"
+                >
+                  RAD
+                </div>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center mt-12 md:mt-16"
+              >
+                <div class="flex items-center">
+                  <div
+                    class="w-8 h-8 md:w-10 md:h-10 mr-3 flex items-center justify-center text-[#d4af37]"
+                  >
+                    <i class="ri-mic-line ri-2x"></i>
+                  </div>
+                  <div
+                    class="text-primary font-['Press_Start_2P'] text-4xl md:text-5xl tracking-wider relative"
+                  >
+                    <span class="relative inline-block">CO.</span>
+                    <div
+                      class="absolute -bottom-2 left-0 w-full h-1 bg-[#d4af37]"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center max-w-3xl">
+            <h1
+              class="font-['Press_Start_2P'] text-xl md:text-2xl lg:text-3xl text-primary mb-6 leading-relaxed"
+            >
+              RADCAT PRODUCTIONS
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 leading-relaxed">
+              LEVEL UP YOUR ROBLOX EXPERIENCE
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+              <a
+                href="https://www.youtube.com/channel/UCD0Y5EZbEFjC7igjACSktpQ"
+                target="_blank"
+                class="pixel-btn whitespace-nowrap !rounded-button"
+                >SUBSCRIBE</a
+              >
+              <a
+                href="#about"
+                class="pixel-btn whitespace-nowrap !rounded-button bg-transparent text-primary border-2 border-primary"
+                >LEARN MORE</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-16 md:py-24 bg-black">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="pixel-header text-xl md:text-2xl text-primary mb-8">
+            WELCOME TO RADCAT
+          </h2>
+          <div class="pixel-border p-6 md:p-8">
+            <p class="text-xl mb-6 leading-relaxed">
+                Welcome to Radcat Productions, your gateway to a world of endless imagination and entertainment within the Roblox universe! At Radcat Productions, we are dedicated to crafting captivating and visually stunning content that showcases the vast potential of Roblox as a creative platform.
+            </p>
+            <div class="w-16 h-1 bg-[#d4af37] mx-auto my-6"></div>
+            <p class="text-lg">EST. 2025</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Mission Section -->
+    <section id="mission" class="py-16 md:py-24 bg-black relative">
+      <div
+        class="absolute inset-0 bg-[url('https://i.postimg.cc/BnFKjYq2/raw.webp')] bg-repeat opacity-5"
+      ></div>
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-4xl mx-auto">
+          <h2
+            class="pixel-header text-xl md:text-2xl text-primary text-center mb-16"
+          >
+            OUR MISSION
+          </h2>
+          <div class="pixel-card p-6 md:p-8 mb-16">
+            <p class="text-xl leading-relaxed">
+                Radcat Productions is on a mission to push the boundaries of creativity and storytelling within the Roblox community. Our goal is to provide a diverse range of content that not only entertains but also inspires and connects with viewers across the globe. Whether it's immersive narratives, thrilling adventures, or hilarious escapades, Radcat Productions is committed to delivering top-notch quality that resonates with Roblox enthusiasts of all ages.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="bg-black border-2 border-primary p-6 flex flex-col items-center text-center"
+            >
+              <div class="w-16 h-16 mb-4 flex items-center justify-center">
+                <i class="ri-movie-2-line ri-3x text-[#d4af37]"></i>
+              </div>
+              <h3 class="font-['Press_Start_2P'] text-sm mb-4">
+                CREATIVE FILMMAKING
+              </h3>
+              <p>
+                Fresh perspectives and advanced techniques bring our stories to
+                life.
+              </p>
+            </div>
+            <div
+              class="bg-black border-2 border-primary p-6 flex flex-col items-center text-center"
+            >
+              <div class="w-16 h-16 mb-4 flex items-center justify-center">
+                <i class="ri-gamepad-line ri-3x text-[#d4af37]"></i>
+              </div>
+              <h3 class="font-['Press_Start_2P'] text-sm mb-4">
+                GENRE VARIETY
+              </h3>
+              <p>
+                From action to heartfelt stories, there's something for
+                everyone.
+              </p>
+            </div>
+            <div
+              class="bg-black border-2 border-primary p-6 flex flex-col items-center text-center"
+            >
+              <div class="w-16 h-16 mb-4 flex items-center justify-center">
+                <i class="ri-team-line ri-3x text-[#d4af37]"></i>
+              </div>
+              <h3 class="font-['Press_Start_2P'] text-sm mb-4">
+                COMMUNITY FOCUS
+              </h3>
+              <p>
+                We love engaging with fans through comments, events, and social
+                media.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Features Section -->
+    <section id="features" class="py-16 md:py-24 bg-black">
+      <div class="container mx-auto px-4">
+        <h2
+          class="pixel-header text-xl md:text-2xl text-primary text-center mb-16"
+        >
+          WHAT MAKES US UNIQUE
+        </h2>
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex flex-col">
+              <div class="h-48 mb-6 relative overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=cinematic%2520roblox%2520scene%2520with%2520dramatic%2520lighting%2520and%2520high%2520quality%2520rendering%2C%25208-bit%2520pixel%2520art%2520style%2C%2520retro%2520gaming%2520aesthetic%2C%2520vibrant%2520colors%2C%2520detailed%2520pixel%2520work&width=600&height=400&seq=1&orientation=landscape"
+                  alt="Cinematic Content"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div
+                  class="absolute inset-0 border-4 border-primary pointer-events-none"
+                ></div>
+              </div>
+              <h3 class="font-['Press_Start_2P'] text-sm mb-4 text-[#d4af37]">
+                IMMERSIVE STORIES
+              </h3>
+              <p class="text-lg">
+                That go beyond the norm, creating memorable experiences for our
+                viewers.
+              </p>
+            </div>
+            <div class="flex flex-col">
+              <div class="h-48 mb-6 relative overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=high%2520quality%2520roblox%2520game%2520scene%2520with%2520beautiful%2520lighting%2520and%2520environment%2C%25208-bit%2520pixel%2520art%2520style%2C%2520retro%2520gaming%2520aesthetic%2C%2520vibrant%2520colors%2C%2520detailed%2520pixel%2520work&width=600&height=400&seq=2&orientation=landscape"
+                  alt="High-Quality Visuals"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div
+                  class="absolute inset-0 border-4 border-primary pointer-events-none"
+                ></div>
+              </div>
+              <h3 class="font-['Press_Start_2P'] text-sm mb-4 text-[#d4af37]">
+                HIGH-QUALITY VISUALS
+              </h3>
+              <p class="text-lg">
+                With cinematic flair that elevates the Roblox experience to new
+                heights.
+              </p>
+            </div>
+            <div class="flex flex-col md:col-span-2">
+              <div class="h-48 mb-6 relative overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=diverse%2520roblox%2520games%2520showcase%2520with%2520different%2520game%2520genres%2520and%2520styles%2C%25208-bit%2520pixel%2520art%2520style%2C%2520retro%2520gaming%2520aesthetic%2C%2520vibrant%2520colors%2C%2520detailed%2520pixel%2520work&width=800&height=400&seq=3&orientation=landscape"
+                  alt="Game Spotlights"
+                  class="w-full h-full object-cover object-top"
+                />
+                <div
+                  class="absolute inset-0 border-4 border-primary pointer-events-none"
+                ></div>
+              </div>
+              <h3 class="font-['Press_Start_2P'] text-sm mb-4 text-[#d4af37]">
+                ROBLOX GAME SPOTLIGHTS
+              </h3>
+              <p class="text-lg">
+                From popular hits to hidden gems, we showcase the best the
+                platform has to offer.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 bg-black">
+      <div class="container mx-auto px-4">
+        <h2
+          class="pixel-header text-xl md:text-2xl text-primary text-center mb-16"
+        >
+          JOIN OUR COMMUNITY
+        </h2>
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div
+              class="bg-black border-2 border-primary p-6 flex flex-col items-center text-center"
+            >
+              <div class="w-16 h-16 mb-4 flex items-center justify-center">
+                <i class="ri-youtube-line ri-3x text-[#d4af37]"></i>
+              </div>
+              <h3 class="font-['Press_Start_2P'] text-sm mb-4">YOUTUBE</h3>
+              <p class="mb-6">
+                Subscribe to our channel for the latest videos and updates.
+              </p>
+              <a
+                href="https://www.youtube.com/channel/UCD0Y5EZbEFjC7igjACSktpQ"
+                target="_blank"
+                class="pixel-btn whitespace-nowrap !rounded-button mt-auto"
+                >SUBSCRIBE</a
+              >
+            </div>
+            <div
+              class="bg-black border-2 border-primary p-6 flex flex-col items-center text-center"
+            >
+              <div class="w-16 h-16 mb-4 flex items-center justify-center">
+                <i class="ri-discord-line ri-3x text-[#d4af37]"></i>
+              </div>
+              <h3 class="font-['Press_Start_2P'] text-sm mb-4">DISCORD</h3>
+              <p class="mb-6">
+                Join our Discord server to connect with other fans and the team.
+              </p>
+              <a
+                href="https://discord.gg/hcqhvzKMTS"
+                target="_blank"
+                class="pixel-btn whitespace-nowrap !rounded-button mt-auto"
+                >JOIN DISCORD</a
+              >
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="py-8 bg-black border-t-2 border-primary">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <a href="#" class="flex items-center">
+              <div class="w-8 h-8 mr-2 flex items-center justify-center">
+                <img
+                  src="https://i.postimg.cc/ZY3nFBkh/raw-removebg-preview.png"
+                  alt="Radcat Logo"
+                  class="w-full h-full object-contain pixel-image"
+                />
+              </div>
+              <span class="font-['Press_Start_2P'] text-primary text-sm"
+                >RADCAT</span
+              >
+            </a>
+          </div>
+          <div class="flex space-x-4 mb-6 md:mb-0">
+            <a
+              href="https://www.youtube.com/channel/UCD0Y5EZbEFjC7igjACSktpQ"
+              target="_blank"
+              class="social-icon"
+            >
+              <i class="ri-youtube-line"></i>
+            </a>
+            <a
+              href="https://discord.gg/hcqhvzKMTS"
+              target="_blank"
+              class="social-icon"
+            >
+              <i class="ri-discord-line"></i>
+            </a>
+           
+            <a href="https://www.instagram.com/radcatwastaken/" class="social-icon">
+              <i class="ri-instagram-line"></i>
+            </a>
+          </div>
+          <div class="text-sm text-center md:text-right">
+            <p>&copy; 2025 Radcat Productions. All rights reserved.</p>
+            <p class="mt-2">
+            <a href="https://rast0fx.github.io/Portfolio/">Made by Mhamad Koussa (rast0fx) </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobile-menu");
+        hamburger.addEventListener("click", function () {
+          this.classList.toggle("open");
+          mobileMenu.classList.toggle("open");
+        });
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            hamburger.classList.remove("open");
+            mobileMenu.classList.remove("open");
+          });
+        });
+      });
+      // Pixel animation on scroll
+      document.addEventListener("DOMContentLoaded", function () {
+        const pixelElements = document.querySelectorAll(".pixel-card");
+        function checkScroll() {
+          pixelElements.forEach((element) => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            if (elementTop < window.innerHeight - elementVisible) {
+              element.classList.add("animate-pulse");
+              setTimeout(() => {
+                element.classList.remove("animate-pulse");
+              }, 500);
+            }
+          });
+        }
+        window.addEventListener("scroll", checkScroll);
+        checkScroll();
+      });
+      // Form submission
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("form");
+        if (form) {
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert(`Thanks for subscribing with ${email}! We'll keep you updated.`);
+            this.reset();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
